@@ -39,7 +39,7 @@ app.post '/', (req, res) ->
           in_reply_to_status_id: req.body.tweet.id
         if json.current_observation
           obs = json.current_observation
-          twitter.updateStatus "@#{req.body.user.screen_name} #{obs.weather} #{obs.temperature_string} #{obs.wind_string} #{obs.ob_url}", params, (err, data) ->
+          twitter.updateStatus "@#{req.body.user.screen_name} #{obs.weather}, #{obs.temperature_string}. Wind: #{obs.wind_string}. #{obs.ob_url}", params, (err, data) ->
             res.jsonp data
 
 app.listen app.get('port'), ->
