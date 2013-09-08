@@ -24,9 +24,11 @@ app.post '/', (req, res) ->
     params =
       query: req.body.params
     request.get {uri: "http://autocomplete.wunderground.com/aq", qs: params}, (err, result, body) =>
+      console.log body
       json = JSON.parse(body)
       place = json.RESULTS[0]
       request.get {uri: "http://api.wunderground.com/api/#{api_key}/conditions#{place.l}"}, (err, results, body) ->
+        console.log body
         json = JSON.parse(body)
         twitter = new Twitter
           consumer_key: req.body.auth.consumer_key
