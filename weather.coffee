@@ -27,7 +27,7 @@ app.post '/', (req, res) ->
       console.log body
       json = JSON.parse(body)
       place = json.RESULTS[0]
-      request.get {uri: "http://api.wunderground.com/api/#{api_key}/conditions#{place.l}"}, (err, results, body) ->
+      request.get {uri: "http://api.wunderground.com/api/#{api_key}/conditions#{place.l}.json"}, (err, results, body) ->
         console.log body
         json = JSON.parse(body)
         twitter = new Twitter
